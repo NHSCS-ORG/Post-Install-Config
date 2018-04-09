@@ -1,0 +1,11 @@
+[Unit]
+Description=Secondboot MAAS Config - DR#-
+
+[Service]
+Type=oneshot
+ExecStart=/etc/nhscs/config/deploy/secondboot/secondboot.sh --start
+ExecStop=/etc/nhscs/config/deploy/secondboot/secondboot.sh --stop
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
