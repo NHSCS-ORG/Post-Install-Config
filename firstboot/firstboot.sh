@@ -44,3 +44,6 @@ update-ca-certificates
 
 # Note that we've run deploy part 1.
 echo 1 > /etc/nhscs/config/checks/fbp1.check
+
+# Reboot for config #2
+reboot now

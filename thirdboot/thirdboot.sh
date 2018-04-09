@@ -35,3 +35,6 @@ oem-config-prepare
 
 # Note that we've run deploy part 3.
 echo 1 > /etc/nhscs/config/checks/fbp3.check
+
+# Reboot to apply final config.
+reboot now
