@@ -1,0 +1,11 @@
+[Unit]
+Description=Thirdboot MAAS Config - DR#-
+
+[Service]
+Type=oneshot
+ExecStart=/etc/nhscs/config/deploy/thirdboot/thirdboot.sh --start
+ExecStop=/etc/nhscs/config/deploy/thirdboot/thirdboot.sh --stop
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
