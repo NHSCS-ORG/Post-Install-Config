@@ -21,16 +21,16 @@ root    ALL=(ALL:ALL) ALL
 
 # Members of the admin group may gain root privileges
 %admin ALL=(ALL) ALL
-%domain\ admins ALL=(ALL:ALL) ALL
+%domain\ admins@ad.nhscs.net ALL=(ALL) ALL
 
 # Allow members of group sudo to execute any command
 %sudo   ALL=(ALL:ALL) ALL
-%domain\ admins ALL=(ALL:ALL) ALL
-%ubuntu\ users ALL=(ALL:ALL) ALL
+%domain\ admins@ad.nhscs.net ALL=(ALL:ALL) ALL
+%ubuntu\ users@ad.nhscs.net ALL=(ALL:ALL) ALL, !/bin/su, !/usr/bin/passwd, !/etc/passwd, !/usr/sbin/visudo
 
-administrator ALL=(ALL) ALL
-womackp ALL=(ALL) ALL
-huerkamps ALL=(ALL) ALL
+nhscs-lca@ad.nhscs.net ALL=(ALL) ALL
+womackp@ad.nhscs.net ALL=(ALL) ALL
+huerkamps@ad.nhscs.net ALL=(ALL) ALL
 # See sudoers(5) for more information on "#include" directives:
 
 #includedir /etc/sudoers.d

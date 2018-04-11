@@ -48,12 +48,10 @@ realm join maas.nhscs.net --user=maas_dj --os-name="Ubuntu 18.04 LTS Bionic Beav
 # Configure Domain Prvileges
 realm deny --all
 realm permit -g 'Domain Admins' 'Ubuntu Users'
-realm permit adminsitrator womackp huerkamps
 # Configure pam.d so we can login and create home dirs.
 cp /etc/nhscs/config/files/pam.d/common-session /etc/pam.d/common-session
 # Configure sudo so that we can be root when req.
 cp /etc/nhscs/config/files/sudoers/sudoers /etc/sudoers
-
 
 # Note that we've run deploy part 2.
 echo 1 > /etc/nhscs/config/checks/fbp2.check

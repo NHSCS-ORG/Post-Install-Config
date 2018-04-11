@@ -37,7 +37,6 @@ ntpupdate eh4-nhscs-msad01.maas.nhscs.new
 systemctl enable ntp
 systemctl start ntp
 
-
 # Add TelaForce's certs.
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Ubuntu-Kickstart/master/Firewall_Certificate.cer -o /usr/share/ca-certificates/tf-firewall.crt
 update-ca-certificates

@@ -27,10 +27,17 @@ if [ $fbp3 = "1" ];
   else
     :
 fi
+# Update the system and install our packages.
 apt update
 apt dist-upgrade -y
 apt autoremove -y
 apt install open-vm-tools-desktop oem-config -y
+cp /etc/nhscs/config/files/dconf/gdm /etc/dconf/profile/gdm
+mkdir /etc/dconf/db/gdm.d
+cp /etc/nhscs/config/files/dconf/00-logo /etc/dconf/db/gdm.d/00-logo
+cp /etc/nhscs/config/files/dconf/01-hide-user /etc/dconf/db/gdm.d/01-hide-user
+cp /etc/nhscs/config/files/dconf/02-banner-message /etc/dconf/db/gdm.d/02-banner-message
+dconf update
 oem-config-prepare
 
 # Note that we've run deploy part 3.
