@@ -1,3 +1,4 @@
 [org/gnome/login-screen]
 logo='/usr/share/icons/hicolor/48x48/emblems/nhscs.png'
 fallback-logo='/usr/share/icons/hicolor/48x48/emblems/nhscs.png'
+#
