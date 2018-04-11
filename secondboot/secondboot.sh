@@ -44,7 +44,7 @@ djpass=h!VsPLASNx3C8dn!
 apt update
 apt install realmd
 # Bind to the domain.
-realm join maas.nhscs.net --user=maas_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$hid --one-time-password=$djpass
+realm join ad.nhscs.net --user=mdt_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$hid --one-time-password=$djpass
 # Configure Domain Prvileges
 realm deny --all
 realm permit -g 'Domain Admins' 'Ubuntu Users'
