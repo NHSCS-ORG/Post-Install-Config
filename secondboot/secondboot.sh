@@ -1,4 +1,3 @@
-#!/bin/bash
 # Let's configure this system, and get it set up.
 
 # Note: This script is called by systemd, do not try to run this by your self.

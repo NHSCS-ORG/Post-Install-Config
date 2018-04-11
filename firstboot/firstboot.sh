@@ -1,4 +1,3 @@
-#!/bin/bash
 # MAAS Config Script for Firstboot - DR#-
 # Note: This script is called by systemd, do not try to run this by your self.
 # This script should be placed in: /etc/nhscs/config/deploy/firstboot/

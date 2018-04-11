@@ -1,4 +1,3 @@
-#!/bin/bash
 # Let's finish configuring this system, and get it set up.
 
 # Note: This script is called by systemd, do not try to run this by your self.
@@ -12,7 +11,6 @@ if [[ $fbp1 = "1" ]];
   else
     exit
 fi
-#
 fbp2=$(cat /etc/nhscs/config/checks/fbp2.check)
 if [[ $fbp2 = "1" ]];
   then

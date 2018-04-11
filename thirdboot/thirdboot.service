@@ -3,8 +3,7 @@ Description=Thirdboot MAAS Config - DR#-
 
 [Service]
 Type=oneshot
-ExecStart=/etc/nhscs/config/deploy/thirdboot/thirdboot.sh --start
-ExecStop=/etc/nhscs/config/deploy/thirdboot/thirdboot.sh --stop
+ExecStart=/bin/bash /etc/nhscs/config/deploy/thirdboot/thirdboot.sh
 RemainAfterExit=true
 
 [Install]

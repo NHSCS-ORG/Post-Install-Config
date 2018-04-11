@@ -3,8 +3,7 @@ Description=Firstboot MAAS Config - DR#-
 
 [Service]
 Type=oneshot
-ExecStart=/etc/nhscs/config/deploy/firstboot/firstboot.sh --start
-ExecStop=/etc/nhscs/config/deploy/firstboot/firstboot.sh --stop
+ExecStart=/bin/bash /etc/nhscs/config/deploy/firstboot/firstboot.sh
 RemainAfterExit=true
 
 [Install]
