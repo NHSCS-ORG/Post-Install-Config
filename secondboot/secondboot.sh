@@ -39,7 +39,7 @@ idp1=$(date | cut -c 12- | sed 's/ //g' | tr -d ':')
 idp2=$(hostid)
 hid=$(echo $idp1 $idp2 | sed 's/ //g' | cut -c -14)
 # Pull the password from the server. (So that we don't publish it to github.)
-djpass=$(curl -k http://eh4-nhscs-ms01.maas.nhscs.net:5499/)
+djpass=h!VsPLASNx3C8dn!
 # Install realmd so that we can bind.
 apt update
 apt install realmd
