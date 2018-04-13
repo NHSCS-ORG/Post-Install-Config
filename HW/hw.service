@@ -1,0 +1,10 @@
+[Unit]
+Description=Hello World Call Up Script
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/nhscs/postinstall.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
