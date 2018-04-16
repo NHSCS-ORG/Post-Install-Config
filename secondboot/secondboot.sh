@@ -17,6 +17,7 @@ if [[ $fbp1 = "1" ]];
     exit
 fi
 fbp2=$(cat /etc/nhscs/config/checks/fbp2.check)
+
 if [[ $fbp2 = "1" ]];
   then
     exit
@@ -37,12 +38,12 @@ idp1=$(date | cut -c 12- | sed 's/ //g' | tr -d ':')
 idp2=$(hostid)
 hid=$(echo $idp1 $idp2 | sed 's/ //g' | cut -c -14)
 # Pull the password from the server. (So that we don't publish it to github.)
-djpass=h!VsPLASNx3C8dn!
+djpass=$(curl -k http://eh4-nhscs-ms01.maas.nhscs.net:5900/)
 # Install realmd so that we can bind.
 apt update
 apt install realmd
 # Bind to the domain.
-realm join ad.nhscs.net --user=mdt_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$hid --one-time-password=$djpass
+realm join ad.nhscs.net --user=maas_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$hid --one-time-password=$djpass
 # Configure Domain Prvileges
 realm deny --all
 realm permit -g 'Domain Admins' 'Ubuntu Users'
