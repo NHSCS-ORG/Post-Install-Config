@@ -45,6 +45,12 @@ systemctl disable firsboot.service
 systemctl disable secondboot.service
 systemctl disable thirdboot.service
 systemctl daemon-reload
+# Remove service files
+rm -rf /etc/systemd/system/firstboot.service
+rm -rf /etc/systemd/system/secondboot.service
+rm -rf /etc/systemd/system/thirdboot.service
+rm -rf /etc/systemd/system/hw.service
+rm -rf /etc/systemd/system/postinit.service
 
 # Note that we've run deploy part 3.
 logger "WE ARE NHSCS"
