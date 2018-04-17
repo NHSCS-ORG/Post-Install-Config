@@ -37,6 +37,15 @@ cp /etc/nhscs/config/files/dconf/01-hide-user /etc/dconf/db/gdm.d/01-hide-user
 cp /etc/nhscs/config/files/dconf/02-banner-message /etc/dconf/db/gdm.d/02-banner-message
 dconf update
 
+# Cleanup Phaze
+# Remove startup scripts
+systemctl disable hw.service
+systemctl disable postinit.service
+systemctl disable firsboot.service
+systemctl disable secondboot.service
+systemctl disable thirdboot.service
+systemctl daemon-reload
+
 # Note that we've run deploy part 3.
 logger "WE ARE NHSCS"
 logger "[thirdboot.sh] Thirdboot completed, rebooting to ready."
