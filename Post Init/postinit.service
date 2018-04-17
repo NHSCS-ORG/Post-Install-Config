@@ -1,0 +1,10 @@
+[Unit]
+Description=Post Init Setup
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/lib/postinit.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

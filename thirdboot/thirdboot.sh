@@ -39,6 +39,7 @@ dconf update
 oem-config-prepare
 
 # Note that we've run deploy part 3.
+logger "[thirdboot.sh] Thirdboot completed, rebooting to ready."
 echo 1 > /etc/nhscs/config/checks/fbp3.check
 
 # Reboot to apply final config.

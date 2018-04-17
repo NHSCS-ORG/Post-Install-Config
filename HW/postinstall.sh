@@ -14,8 +14,7 @@ apt update
 apt install curl
 
 # Create base dirs.
-mkdir /etc/nhscs
-mkdir /etc/nhscs/config
+# Proceding dir was created by post init.
 mkdir /etc/nhscs/config/deploy
 
 # Pull Firstboot
@@ -48,7 +47,7 @@ systectl daemon-reload
 systemctl enable thirdboot.service
 
 # Create Check Files
-mkdir /etc/nhscs/config/checks
+# This dir was handeled by post init
 touch /etc/nhscs/config/checks/fbp1.check
 touch /etc/nhscs/config/checks/fbp2.check
 touch /etc/nhscs/config/checks/fbp2.check
@@ -66,7 +65,7 @@ mkdir /etc/nhscs/config/files/pam.d
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/pam.d/common-session -o /etc/nhscs/config/files/pam.d/common-session
 
 # Pull dconf config
-mkdir /etc/nhscs/config/dconf
+mkdir /etc/nhscs/config/files/dconf
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/dconf/00-logo -o /etc/nhscs/config/files/dconf/00-logo
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/dconf/01-hide-user -o /etc/nhscs/config/files/dconf/01-hide-user
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/dconf/02-banner-message -o /etc/nhscs/config/files/dconf/02-banner-message
@@ -74,6 +73,7 @@ curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/C
 
 # Note that we've run HWCH.
 logger "WE ARE NHSCS"
+logger "[postinstall.sh] HWCH completed, rebooting to config P1."
 echo 1 > /etc/nhscs/config/checks/hwch.check
 
 # Reboot for config.
