@@ -1,14 +1,23 @@
 # This script calls for our post install script,
 # sets it up, and the reboots.
 
+# Check if this is an installer or not.
+cmdline=$(cat /proc/cmdline | cut -c -4)
+if [[ ! $cmdline = "BOOT" ]];
+  then
+    exit
+  else
+    :
+fi
+
 # Because this is our post init, we need to create all of our files.
-if [ ! -d "/etc/nhscs/" ]; then
+if [[ ! -d "/etc/nhscs/" ]]; then
   mkdir /etc/nhscs/
   mkdir /etc/nhscs/config/
   mkdir /etc/nhscs/config/checks
   touch /etc/nhscs/config/checks/pinit.check
 fi
-if [ ! -d "/usr/nhscs/" ]; then
+if [[ ! -d "/usr/nhscs/" ]]; then
   mkdir /usr/nhscs/
 fi
 # Check if this is actually post init.
