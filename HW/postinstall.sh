@@ -48,10 +48,10 @@ systemctl enable thirdboot.service
 
 # Pull Everyboot
 mkdir /etc/nhscs/config/deploy/everyboot
-curl -k <link> -o /etc/nhscs/config/deploy/everyboot/updateconf.sh
+curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/everyboot/updateconf.sh -o /etc/nhscs/config/deploy/everyboot/updateconf.sh
 chmod +x /etc/nhscs/config/deploy/everyboot/updateconf.sh
 # Pull service
-curl -k <link> -o /etc/systemd/updateconf.service
+curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/everyboot/updateconf.service -o /etc/systemd/updateconf.service
 systemctl daemon-reload
 systemctl enable updateconf.service
 
