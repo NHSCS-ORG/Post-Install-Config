@@ -29,7 +29,7 @@ fi
 apt update
 apt dist-upgrade -y
 apt autoremove -y
-apt install open-vm-tools-desktop oem-config -y
+apt install open-vm-tools oem-config -y
 cp /etc/nhscs/config/files/dconf/gdm /etc/dconf/profile/gdm
 mkdir /etc/dconf/db/gdm.d
 cp /etc/nhscs/config/files/dconf/00-logo /etc/dconf/db/gdm.d/00-logo
