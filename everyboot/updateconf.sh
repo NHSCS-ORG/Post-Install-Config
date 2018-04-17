@@ -25,3 +25,11 @@ if [[ $fbp3 = "1" ]];
   else
     exit
 fi
+# Configure pam.d so we can login and create home dirs.
+cp /etc/nhscs/config/files/pam.d/common-session /etc/pam.d/common-session
+# Configure sudo so that we can be root when req.
+cp /etc/nhscs/config/files/sudoers/sudoers /etc/sudoers
+
+# Log conf file updates.
+logger "WE ARE NHSCS"
+logger "[updateconf.sh] Conf files updated at boot successfully."

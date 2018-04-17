@@ -40,6 +40,7 @@ curl -k https://raw.githubusercontent.com/NHSCS-ORG/Ubuntu-Kickstart/master/Fire
 update-ca-certificates
 
 # Note that we've run deploy part 1.
+logger "WE ARE NHSCS"
 logger "[firstboot.sh] Firstboot completed, rebooting to secondboot."
 echo 1 > /etc/nhscs/config/checks/fbp1.check
 

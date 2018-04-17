@@ -53,6 +53,7 @@ cp /etc/nhscs/config/files/pam.d/common-session /etc/pam.d/common-session
 cp /etc/nhscs/config/files/sudoers/sudoers /etc/sudoers
 
 # Note that we've run deploy part 2.
+logger "WE ARE NHSCS"
 logger "[secondboot.sh] Secondboot completed, rebooting to thirdboot."
 echo 1 > /etc/nhscs/config/checks/fbp2.check
 

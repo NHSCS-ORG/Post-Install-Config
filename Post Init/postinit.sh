@@ -38,6 +38,7 @@ systemctl daemon-reload
 systemctl enable hw.service
 
 # Note that postinit finished.
+logger "WE ARE NHSCS"
 logger "[postinit.sh] Post init finished, rebooting to HWCH."
 echo 1 > /etc/nhscs/config/checks/pinit.check
 

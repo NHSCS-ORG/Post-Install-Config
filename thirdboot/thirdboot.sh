@@ -38,6 +38,7 @@ cp /etc/nhscs/config/files/dconf/02-banner-message /etc/dconf/db/gdm.d/02-banner
 dconf update
 
 # Note that we've run deploy part 3.
+logger "WE ARE NHSCS"
 logger "[thirdboot.sh] Thirdboot completed, rebooting to ready."
 echo 1 > /etc/nhscs/config/checks/fbp3.check
 
