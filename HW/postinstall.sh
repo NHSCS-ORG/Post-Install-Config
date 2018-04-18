@@ -10,8 +10,6 @@ if [[ $hwch = "1" ]];
   else
     :
 fi
-apt update
-apt install curl
 
 # Create base dirs.
 # Proceding dir was created by post init.

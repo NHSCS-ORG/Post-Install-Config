@@ -3,7 +3,7 @@
 
 # Check if this is an installer or not.
 cmdline=$(cat /proc/cmdline | cut -c -4)
-if [[ ! $cmdline = "BOOT" ]];
+if [ ! $cmdline = "BOOT" ];
   then
     exit
   else
@@ -11,18 +11,18 @@ if [[ ! $cmdline = "BOOT" ]];
 fi
 
 # Because this is our post init, we need to create all of our files.
-if [[ ! -d "/etc/nhscs/" ]]; then
+if [ ! -d "/etc/nhscs/" ]; then
   mkdir /etc/nhscs/
   mkdir /etc/nhscs/config/
   mkdir /etc/nhscs/config/checks
   touch /etc/nhscs/config/checks/pinit.check
 fi
-if [[ ! -d "/usr/nhscs/" ]]; then
+if [ ! -d "/usr/nhscs/" ]; then
   mkdir /usr/nhscs/
 fi
 # Check if this is actually post init.
 pinit=$(cat /etc/nhscs/config/checks/pinit.check)
-if [[ $pinit = "1" ]];
+if [ $pinit = "1" ];
   then
     exit
   else
@@ -30,6 +30,8 @@ if [[ $pinit = "1" ]];
 fi
 
 # Pull post install script
+apt update
+apt install curl -y
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/HW/postinstall.sh -o /usr/nhscs/postinstall.sh
 chmod +x /usr/nhscs/postinstall.sh
 #Pull post install service
