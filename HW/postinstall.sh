@@ -12,7 +12,7 @@ if [[ $hwch = "1" ]];
 fi
 
 # Create base dirs.
-# Proceding dir was created by post init.
+# Preceding dir was created by post init.
 mkdir /etc/nhscs/config/deploy
 
 # Pull Firstboot
@@ -49,7 +49,7 @@ mkdir /etc/nhscs/config/deploy/everyboot
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/everyboot/updateconf.sh -o /etc/nhscs/config/deploy/everyboot/updateconf.sh
 chmod +x /etc/nhscs/config/deploy/everyboot/updateconf.sh
 # Pull service
-curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/everyboot/updateconf.service -o /etc/systemd/updateconf.service
+curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/everyboot/updateconf.service -o /etc/systemd/system/updateconf.service
 systemctl daemon-reload
 systemctl enable updateconf.service
 
