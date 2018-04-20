@@ -12,7 +12,8 @@ if [[ $hwch = "1" ]];
 fi
 
 # Create base dirs.
-# Preceding dir was created by post init.
+mkdir /etc/nhscs
+mkdir /etc/nhscs/config/
 mkdir /etc/nhscs/config/deploy
 
 # Pull Firstboot
@@ -54,7 +55,7 @@ systemctl daemon-reload
 systemctl enable updateconf.service
 
 # Create Check Files
-# This dir was handeled by post init
+mkdir /etc/nhscs/config/checks
 touch /etc/nhscs/config/checks/fbp1.check
 touch /etc/nhscs/config/checks/fbp2.check
 touch /etc/nhscs/config/checks/fbp2.check

@@ -11,17 +11,12 @@ if [ ! $cmdline = "BOOT" ];
 fi
 
 # Because this is our post init, we need to create all of our files.
-if [ ! -d "/etc/nhscs/" ]; then
-  mkdir /etc/nhscs/
-  mkdir /etc/nhscs/config/
-  mkdir /etc/nhscs/config/checks
-  touch /etc/nhscs/config/checks/pinit.check
-fi
 if [ ! -d "/usr/nhscs/" ]; then
   mkdir /usr/nhscs/
 fi
 # Check if this is actually post init.
-pinit=$(cat /etc/nhscs/config/checks/pinit.check)
+touch /usr/nhscs/pinit.check
+pinit=$(cat /usr/nhscs/pinit.check)
 if [ $pinit = "1" ];
   then
     exit
@@ -42,7 +37,7 @@ systemctl enable hw.service
 # Note that postinit finished.
 logger "WE ARE NHSCS"
 logger "[postinit.sh] Post init finished, rebooting to HWCH."
-echo 1 > /etc/nhscs/config/checks/pinit.check
+echo 1 > /usr/nhscs/pinit.check
 
 # Reboot to HWCH.
 reboot now
