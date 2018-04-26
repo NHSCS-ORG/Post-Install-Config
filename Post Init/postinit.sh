@@ -31,8 +31,10 @@ curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/H
 chmod +x /usr/nhscs/postinstall.sh
 #Pull post install service
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/HW/hw.service -o /etc/systemd/system/hw.service
+sleep 2
 systemctl daemon-reload
 systemctl enable hw.service
+sleep 5
 
 # Note that postinit finished.
 logger "WE ARE NHSCS"
