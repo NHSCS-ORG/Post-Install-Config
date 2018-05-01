@@ -36,8 +36,11 @@ systemctl enable ntp
 systemctl start ntp
 
 # Add TelaForce's certs.
-curl -k https://raw.githubusercontent.com/NHSCS-ORG/Ubuntu-Kickstart/master/Firewall_Certificate.cer -o /usr/share/ca-certificates/tf-firewall.crt
+cp /etc/nhscs/config/files/telaforce/firewall.crt /usr/share/ca-certificates/fgt.crt
 update-ca-certificates
+
+# Disable auto login of the default ubuntu user.
+cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
 
 # Note that we've run deploy part 1.
 logger "WE ARE NHSCS"

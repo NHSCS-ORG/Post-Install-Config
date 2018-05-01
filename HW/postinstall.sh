@@ -87,6 +87,14 @@ curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/C
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/dconf/02-banner-message -o /etc/nhscs/config/files/dconf/02-banner-message
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/dconf/gdm -o /etc/nhscs/config/files/dconf/gdm
 
+# Pull gdm3 config
+mkdir /etc/nhscs/config/files/gdm3
+curl -k <github url> -o /etc/nhscs/config/files/gdm3/custom.conf
+
+# Pull TelaForce's certs
+mkdir /etc/nhscs/config/files/telaforce
+curl -k https://raw.githubusercontent.com/NHSCS-ORG/Ubuntu-Kickstart/master/Firewall_Certificate.cer -o /etc/nhscs/config/files/telaforce/firewall.crt
+
 sleep 5
 
 # Note that we've run HWCH.
