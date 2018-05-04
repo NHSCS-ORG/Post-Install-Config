@@ -52,6 +52,14 @@ rm -rf /etc/systemd/system/thirdboot.service
 rm -rf /etc/systemd/system/hw.service
 rm -rf /etc/systemd/system/postinit.service
 
+# Remove existing user account and create new local admin
+userdel ubuntu
+useradd maas-lca
+# Update new local admin password
+# passvar=$(curl -k /dailypass.txt) (Testing in progress, ignoring web call.)
+passvar=$(echo "maas-lca")
+echo $passvar | passwd username --stdin
+
 # Note that we've run deploy part 3.
 logger "WE ARE NHSCS"
 logger "[thirdboot.sh] Thirdboot completed, rebooting to ready."
