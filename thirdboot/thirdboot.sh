@@ -30,12 +30,15 @@ apt update
 apt dist-upgrade -y
 apt autoremove -y
 apt install open-vm-tools -y
+# Configure GDM to our liking
 cp /etc/nhscs/config/files/dconf/gdm /etc/dconf/profile/gdm
 mkdir /etc/dconf/db/gdm.d
 cp /etc/nhscs/config/files/dconf/00-logo /etc/dconf/db/gdm.d/00-logo
 cp /etc/nhscs/config/files/dconf/01-hide-user /etc/dconf/db/gdm.d/01-hide-user
 cp /etc/nhscs/config/files/dconf/02-banner-message /etc/dconf/db/gdm.d/02-banner-message
 dconf update
+rm -rf /etc/gdm3/custom.conf
+cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
 
 # Cleanup Phaze
 # Remove startup scripts
@@ -58,7 +61,7 @@ useradd maas-lca
 # Update new local admin password
 # passvar=$(curl -k /dailypass.txt) (Testing in progress, ignoring web call.)
 passvar=$(echo "maas-lca")
-echo $passvar | passwd maas-lca --stdin
+echo "maas-lca:$passvar" | chpasswd
 
 # Note that we've run deploy part 3.
 logger "WE ARE NHSCS"

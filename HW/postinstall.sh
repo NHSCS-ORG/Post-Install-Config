@@ -37,7 +37,6 @@ chmod +x /etc/nhscs/config/deploy/secondboot/secondboot.sh
 # Pull service
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/secondboot/secondboot.service -o /etc/systemd/system/secondboot.service
 sleep 2
-systemctl daemon-reload
 systemctl enable secondboot.service
 
 # Pull Thirdboot
@@ -48,7 +47,6 @@ chmod +x /etc/nhscs/config/deploy/thirdboot/thirdboot.sh
 # Pull service
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/thirdboot/thirdboot.service -o /etc/systemd/system/thirdboot.service
 sleep 2
-systemctl daemon-reload
 systemctl enable thirdboot.service
 
 # Pull Everyboot
@@ -59,14 +57,13 @@ chmod +x /etc/nhscs/config/deploy/everyboot/updateconf.sh
 # Pull service
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/everyboot/updateconf.service -o /etc/systemd/system/updateconf.service
 sleep 2
-systemctl daemon-reload
 systemctl enable updateconf.service
 
 # Create Check Files
 mkdir /etc/nhscs/config/checks
 touch /etc/nhscs/config/checks/fbp1.check
 touch /etc/nhscs/config/checks/fbp2.check
-touch /etc/nhscs/config/checks/fbp2.check
+touch /etc/nhscs/config/checks/fbp3.check
 touch /etc/nhscs/config/checks/hwch.check
 
 # Create conf dirs
@@ -89,7 +86,7 @@ curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/C
 
 # Pull gdm3 config
 mkdir /etc/nhscs/config/files/gdm3
-curl -k <github url> -o /etc/nhscs/config/files/gdm3/custom.conf
+curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/gdm3/custom.conf -o /etc/nhscs/config/files/gdm3/custom.conf
 
 # Pull TelaForce's certs
 mkdir /etc/nhscs/config/files/telaforce
