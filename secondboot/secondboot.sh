@@ -10,7 +10,7 @@
 
 # First let's check if this is firstboot, secondboot, or thirdboot.
 fbp1=$(cat /etc/nhscs/config/checks/fbp1.check)
-if [ $fbp1 = "1" ];
+if [[ $fbp1 = "1" ]];
   then
     :
   else
@@ -18,14 +18,14 @@ if [ $fbp1 = "1" ];
 fi
 fbp2=$(cat /etc/nhscs/config/checks/fbp2.check)
 
-if [ $fbp2 = "1" ];
+if [[ $fbp2 = "1" ]];
   then
     exit
   else
     :
 fi
 fbp3=$(cat /etc/nhscs/config/checks/fbp3.check)
-if [ $fbp3 = "1" ];
+if [[ $fbp3 = "1" ]];
   then
     exit
   else
