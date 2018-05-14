@@ -6,5 +6,9 @@ Type=oneshot
 ExecStart=/bin/bash /usr/lib/postinit.sh
 RemainAfterExit=true
 
+[Unit]
+Wants=network-online.target
+After=network-online.target
+
 [Install]
 WantedBy=multi-user.target
