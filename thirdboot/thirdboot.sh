@@ -47,7 +47,6 @@ systemctl disable postinit.service
 systemctl disable firsboot.service
 systemctl disable secondboot.service
 systemctl disable thirdboot.service
-systemctl daemon-reload
 # Remove service files
 rm -rf /etc/systemd/system/firstboot.service
 rm -rf /etc/systemd/system/secondboot.service
@@ -57,7 +56,8 @@ rm -rf /etc/systemd/system/postinit.service
 
 # Remove existing user account and create new local admin
 userdel ubuntu
-useradd maas-lca
+useradd -m -s /bin/bash maas-lca
+usermod -a -G sudoers maas-lca
 # Update new local admin password
 # passvar=$(curl -k /dailypass.txt) (Testing in progress, ignoring web call.)
 passvar=$(echo "maas-lca")

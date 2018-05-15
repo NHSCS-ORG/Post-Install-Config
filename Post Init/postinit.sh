@@ -26,7 +26,6 @@ fi
 
 # Pull post install script
 apt update
-apt install curl -y
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/HW/postinstall.sh -o /usr/nhscs/postinstall.sh
 chmod +x /usr/nhscs/postinstall.sh
 #Pull post install service
