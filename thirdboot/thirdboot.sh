@@ -61,7 +61,7 @@ useradd maas-lca
 # Update new local admin password
 # passvar=$(curl -k /dailypass.txt) (Testing in progress, ignoring web call.)
 passvar=$(echo "maas-lca")
-echo "maas-lca:$passvar" | chpasswd
+echo -e "$passvar\n$passvar" | passwd maas-lca
 
 # Note that we've run deploy part 3.
 logger "WE ARE NHSCS"
