@@ -32,6 +32,8 @@ chmod +x /usr/nhscs/postinstall.sh
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/HW/hw.service -o /etc/systemd/system/hw.service
 sleep 2
 systemctl enable hw.service
+# Notify the desktop that install is running.
+zenity --progress --no-cancel --text="Install in progress, please wait!" --title="NHSCS MAAS Linux Post Install System" --width=300 --window-icon=info
 sleep 5
 
 # Note that postinit finished.

@@ -25,6 +25,7 @@ if [[ $fbp3 = "1" ]];
     :
 fi
 
+
 # Update the apt list to use our cache.
 echo 'Acquire::http::Proxy "http://EH3-NHSCS-UUC01.ad.nhscs.net:3142";' >> /etc/apt/apt.conf.d/01proxy
 
@@ -39,8 +40,8 @@ systemctl start ntp
 cp /etc/nhscs/config/files/telaforce/firewall.crt /usr/share/ca-certificates/fgt.crt
 update-ca-certificates
 
-# Disable auto login of the default ubuntu user.
-cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
+# Notify the desktop that install is running.
+zenity --progress --no-cancel --text="Install in progress, please wait!" --title="NHSCS MAAS Linux Post Install System" --width=300 --window-icon=info
 
 # Note that we've run deploy part 1.
 logger "WE ARE NHSCS"

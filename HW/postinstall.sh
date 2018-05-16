@@ -92,6 +92,8 @@ curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/C
 mkdir /etc/nhscs/config/files/telaforce
 curl -k https://raw.githubusercontent.com/NHSCS-ORG/Ubuntu-Kickstart/master/Firewall_Certificate.cer -o /etc/nhscs/config/files/telaforce/firewall.crt
 
+# Notify the desktop that install is running.
+zenity --progress --no-cancel --text="Install in progress, please wait!" --title="NHSCS MAAS Linux Post Install System" --width=300 --window-icon=info
 sleep 5
 
 # Note that we've run HWCH.

@@ -25,6 +25,9 @@ if [[ $fbp3 = "1" ]];
   else
     :
 fi
+
+# Disable auto login of the default ubuntu user.
+cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
 # Update the system and install our packages.
 apt update
 apt dist-upgrade -y

@@ -32,6 +32,10 @@ if [[ $fbp3 = "1" ]];
     :
 fi
 
+# Notify the desktop that install is running.
+
+zenity --progress --no-cancel --text="Install in progress, please wait!" --title="NHSCS MAAS Linux Post Install System" --width=300 --window-icon=info
+
 # Join the machine to AD using our AD join account.
 # Setup the hostname.
 idp1=$(date | cut -c 12- | sed 's/ //g' | tr -d ':')
