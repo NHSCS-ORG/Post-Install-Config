@@ -27,8 +27,10 @@ root    ALL=(ALL:ALL) ALL
 # Allow members of group sudo to execute any command
 %sudo   ALL=(ALL:ALL) ALL
 %domain\ admins@ad.nhscs.net ALL=(ALL:ALL) ALL
-%ubuntu\ users@ad.nhscs.net ALL=(ALL:ALL) ALL, !/bin/su, !/usr/bin/passwd, !/etc/passwd, !/usr/sbin/visudo
+%domain\ admins@maas.nhscs.net ALL=(ALL:ALL) ALL
+%ubuntu\ operators@maas.nhscs.net ALL=(ALL:ALL) ALL, !/bin/su, !/usr/bin/passwd, !/etc/passwd, !/usr/sbin/visudo
 
+maas-lca@maas.nhscs.net ALL=(ALL) ALL
 nhscs-lca@ad.nhscs.net ALL=(ALL) ALL
 womackp@ad.nhscs.net ALL=(ALL) ALL
 huerkamps@ad.nhscs.net ALL=(ALL) ALL

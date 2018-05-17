@@ -50,10 +50,10 @@ djpass=$(echo "mass_dj")
 apt update
 apt install realmd
 # Bind to the domain.
-realm join ad.nhscs.net --user=maas_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$nhid --one-time-password=$djpass
+realm join maas.nhscs.net --user=maas_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$nhid --one-time-password=$djpass
 # Configure Domain Prvileges
 realm deny --all
-realm permit -g 'Domain Admins' 'Ubuntu Users'
+realm permit -g 'Domain Admins' 'Ubuntu Operators'
 # Configure pam.d so we can login and create home dirs.
 cp /etc/nhscs/config/files/pam.d/common-session /etc/pam.d/common-session
 # Configure sudo so that we can be root when req.
