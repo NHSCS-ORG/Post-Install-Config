@@ -33,14 +33,16 @@ if [[ $fbp3 = "1" ]];
 fi
 
 # Notify the desktop that install is running.
-
 zenity --progress --no-cancel --text="Install in progress, please wait!" --title="NHSCS MAAS Linux Post Install System" --width=300 --window-icon=info
 
 # Join the machine to AD using our AD join account.
 # Setup the hostname.
+chid=$(cat /etc/hostname)
 idp1=$(date | cut -c 12- | sed 's/ //g' | tr -d ':')
 idp2=$(hostid)
-hid=$(echo $idp1 $idp2 | sed 's/ //g' | cut -c -14)
+nhid=$(echo $idp1 $idp2 | sed 's/ //g' | cut -c -14)
+sed -i "s/$chid/$nhid/g" /etc/hosts
+sed -i "s/$chid/$nhid/g" /etc/hostname
 # Pull the password from the server. (So that we don't publish it to github.)
 # djpass=$(curl -k <passwd server here>/djpass.txt) (Testing in progress, ignoring web call)
 djpass=$(echo "mass_dj")
@@ -48,7 +50,7 @@ djpass=$(echo "mass_dj")
 apt update
 apt install realmd
 # Bind to the domain.
-realm join ad.nhscs.net --user=maas_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$hid --one-time-password=$djpass
+realm join ad.nhscs.net --user=maas_dj --os-name="Ubuntu 18.04 LTS Bionic Beaver" --os-version="MAAS Deployed PXE Image" --computer-name=$nhid --one-time-password=$djpass
 # Configure Domain Prvileges
 realm deny --all
 realm permit -g 'Domain Admins' 'Ubuntu Users'
