@@ -57,7 +57,7 @@ realm permit -g 'Domain Admins' 'Ubuntu Operators' 'Ubuntu Admins'
 # Configure pam.d so we can login and create home dirs.
 cp /etc/nhscs/config/files/pam.d/common-session /etc/pam.d/common-session
 # Configure sudo so that we can be root when req.
-cp /etc/nhscs/config/files/sudoers/sudoers /etc/sudoers
+cp /etc/nhscs/config/files/sudoers/01domain /etc/sudoers.d/01domain
 
 # Note that we've run deploy part 2.
 logger "WE ARE NHSCS"

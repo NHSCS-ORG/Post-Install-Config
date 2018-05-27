@@ -1,0 +1,11 @@
+# Members of the admin group may gain root privileges
+%domain\ admins@ad.nhscs.net ALL=(ALL) ALL
+%domain\ admins@maas.nhscs.net ALL=(ALL) ALL
+%ubuntu\ admins@maas.nhscs.net ALL=(ALL) ALL
+
+
+# Allow members of group sudo to execute any command
+%domain\ admins@ad.nhscs.net ALL=(ALL:ALL) ALL
+%domain\ admins@maas.nhscs.net ALL=(ALL:ALL) ALL
+%ubuntu\ admins@maas.nhscs.net ALL=(ALL:ALL) ALL
+%ubuntu\ operators@maas.nhscs.net ALL=(ALL:ALL) ALL, !/bin/su, !/usr/bin/passwd, !/etc/passwd, !/usr/sbin/visudo
