@@ -26,6 +26,9 @@ if [[ $fbp3 = "1" ]];
     :
 fi
 
+# Notify the desktop that install is running.
+zenity --progress --no-cancel --text="Install in progress, please wait!" --title="NHSCS MAAS Linux Post Install System" --width=300 --window-icon=info
+
 # Disable auto login of the default ubuntu user.
 cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
 # Update the system and install our packages.

@@ -17,7 +17,6 @@ if [[ $fbp1 = "1" ]];
     exit
 fi
 fbp2=$(cat /etc/nhscs/config/checks/fbp2.check)
-
 if [[ $fbp2 = "1" ]];
   then
     exit
