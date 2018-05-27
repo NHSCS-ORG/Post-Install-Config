@@ -71,7 +71,7 @@ mkdir /etc/nhscs/config/files
 
 # Pull sudoers config
 mkdir /etc/nhscs/config/files/sudoers
-curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/sudoers/sudoers -o /etc/nhscs/config/files/sudoers/sudoers
+curl -k https://raw.githubusercontent.com/NHSCS-ORG/Post-Install-Config/master/Config%20Files/sudoers/01domain -o /etc/nhscs/config/files/sudoers/01domain
 
 # Pull pam.d config
 mkdir /etc/nhscs/config/files/pam.d
