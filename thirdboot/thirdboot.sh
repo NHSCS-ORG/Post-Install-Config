@@ -33,9 +33,9 @@ zenity --progress --no-cancel --text="Install in progress, please wait!" --title
 cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
 # Update the system and install our packages.
 apt update
-apt dist-upgrade -y
+apt dist-upgrade -y -q
 apt autoremove -y
-apt install open-vm-tools -y
+apt install open-vm-tools-desktop -y
 # Configure GDM to our liking
 cp /etc/nhscs/config/files/dconf/gdm /etc/dconf/profile/gdm
 mkdir /etc/dconf/db/gdm.d
