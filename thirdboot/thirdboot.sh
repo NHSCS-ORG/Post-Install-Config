@@ -63,7 +63,7 @@ rm -rf /etc/systemd/system/postinit.service
 # Remove existing user account and create new local admin
 userdel ubuntu
 useradd -m -s /bin/bash maas-lca
-usermod -a -G sudoers maas-lca
+usermod -a -G sudo maas-lca
 # Update new local admin password
 # passvar=$(curl -k /dailypass.txt) (Testing in progress, ignoring web call.)
 passvar=$(echo "maas-lca")
