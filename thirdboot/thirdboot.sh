@@ -33,7 +33,7 @@ zenity --progress --no-cancel --text="Install in progress, please wait!" --title
 cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
 # Update the system and install our packages.
 apt update
-apt dist-upgrade -y -q
+apt dist-upgrade -y
 apt autoremove -y
 apt install open-vm-tools-desktop -y
 # Configure GDM to our liking
@@ -45,6 +45,8 @@ cp /etc/nhscs/config/files/dconf/02-banner-message /etc/dconf/db/gdm.d/02-banner
 dconf update
 rm -rf /etc/gdm3/custom.conf
 cp /etc/nhscs/config/files/gdm3/custom.conf /etc/gdm3/custom.conf
+# Configure pam.d so we can login and create home dirs.
+cp /etc/nhscs/config/files/pam.d/common-session /etc/pam.d/common-session
 
 # Cleanup Phaze
 # Remove startup scripts
