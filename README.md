@@ -23,7 +23,7 @@ We use a combonation of Systemd and MaaS to build out our deployment.
 * Generate and Pull a password from a webserver so that root isn't accessable.
 
 ### Steps Breakdown
-This is a breakdown of how the config should apply, please note that the scripts are coded for an existing environment and may fail if they are run without modification. Please head the warning at the top of this page.
+This is a breakdown of how the config should apply, please note that the scripts are coded for an existing environment and may fail if they are run without modification. Please heed the warning at the top of this page.
 
 #### At Install Time
 *Note: postinit.service, and postinit.sh must be included in your installer image for any of this to work. I'd recomend [Cubic](https://launchpad.net/cubic) to modify the stock ubuntu installer. You must follow or modify the path provided by postinit.service.*
@@ -97,3 +97,57 @@ Here are the steps that postinstall.sh completes:
 * Writes  ```hwch.check``` with a 1 so that when firstboot.sh runs it can determine the system's current deployment status.
 ---
 #### Firstboot
+At this point in deployment we consider the system live, as all of our base configuration has taken place and we are now ready to start implimenting the features we need.
+
+*Note: At this point the deployment will wait for network access before continuing, if the system can not bring up the network interface at this step, the deployment will hang. This is configured in the ```firstboot.service``` file and generally should be left alone. If you are certain that your interface will come up, but for some reason systemd is being stupid, you can remove this line.*
+
+Firstboot.sh completes the following steps, and then reboots the machine:
+##### Part 1
+* Run a test against our ```.check``` files to determine current stage of deployment.
+
+##### Part 2
+* Write the file ```/etc/apt/apt.conf.d/01proxy``` with our [apt-cache](https://launchpad.net/ubuntu/+source/apt-cacher-ng) server. 
+* *Note: At this point if you do not modify the script, updating will fail as you're trying to hit a server that doesn't exist in your environment. Please heed the warning at the top of the page.*
+
+##### Part 3
+* Remove ```ntp.conf```
+* Rewrite ```ntp.conf``` with our configuration as to ensure that time drift does not break ADDS.
+* Enable the NTP service on bootup.
+
+##### Part 4
+* Import our certs into the local trusted store from our storage location.
+
+##### Part 5
+* Log to the system that firstboot.sh has completed.
+* Writes  ```firstboot.check``` with a 1 so that when secondboot.sh runs it can determine the system's current deployment status.
+---
+#### Secondboot
+Secondboot is our primary configuration script, we are going to join our ADDS Domain, set our hostname, configure base sudo permissions, and configure respect for ADDS security groups.
+
+*Note: At this point the deployment will wait for network access before continuing, if the system can not bring up the network interface at this step, the deployment will hang. This is configured in the ```secondboot.service``` file and generally should be left alone. If you are certain that your interface will come up, but for some reason systemd is being stupid, you can remove this line.*
+
+Secondboot.sh completes the following steps, and then reboots the machine:
+##### Part 1
+* Run a test against our ```.check``` files to determine current stage of deployment.
+
+##### Part 2
+* Start the process to join the machine to ADDS.
+* Generate a hostname based on the UUID of the system, and the date & time, storing it in a varable.
+* Change the hostname to the generated hostname.
+
+##### Part 3
+* Pull the domain join password from a server (to prevent publishing to Github).
+* Install ```realmd``` to provide authentication methods for ADDS.
+* Join the domain via realmd passing the hostname varable for computer name.
+
+##### Part 4
+* Configure ```realmd``` to permit login for the required groups.
+
+##### Part 5
+* Configure sudoers to respect ADDS permissions for root and sudo access.
+* *Note: In this deployment our custom sudoers blocks access to some commands for specific user groups, but standard sudo acess remains for local users, this is why we use a random password later on, we do not want local access on the system. In this deployment a system problem should be resolved with a reimage, not troubleshooting.*
+
+##### Part 6
+* Log to the system that secondboot.sh has completed.
+* Writes  ```secondboot.check``` with a 1 so that when secondboot.sh runs it can determine the system's current deployment status.
+---
