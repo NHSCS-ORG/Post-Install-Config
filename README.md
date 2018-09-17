@@ -151,3 +151,70 @@ Secondboot.sh completes the following steps, and then reboots the machine:
 * Log to the system that secondboot.sh has completed.
 * Writes  ```secondboot.check``` with a 1 so that when secondboot.sh runs it can determine the system's current deployment status.
 ---
+#### Thirdboot
+Thirdboot is the final configuration script we run. It fininishes configuration and then cleans up the system so it's in a state ready for use.
+
+*Note: At this point the deployment will wait for network access before continuing, if the system can not bring up the network interface at this step, the deployment will hang. This is configured in the ```thirdboot.service``` file and generally should be left alone. If you are certain that your interface will come up, but for some reason systemd is being stupid, you can remove this line.*
+
+Thirdboot.sh completes the following steps, and then reboots the machine:
+
+##### Part 1
+* Run a test against our ```.check``` files to determine current stage of deployment.
+
+##### Part 2
+* Disable automatic login via dconf.
+
+##### Part 3
+* Update the system
+* Install required packages
+ * Open-VM-Tools
+ 
+##### Part 4
+* Configure GDM3 to meet our requirements
+ * Add login text
+ * Require username every time
+ * Do not show last user
+
+##### Part 5
+* Update the pam.d configuration to allow ADDS users to create home directories.
+* Start Cleanup Phase
+
+##### Part 6
+* Use ```systemctl``` to disable ```hw.service```
+* Use ```systemctl``` to disable ```postinit.service```
+* Use ```systemctl``` to disable ```firstboot.service```
+* Use ```systemctl``` to disable ```secondboot.service```
+* Use ```systemctl``` to disable ```thirdboot.service```
+* Remove all service files from ```/etc/systemd/system```
+
+##### Part 7
+* Remove MaaS created user account
+* Add a local user with bash as their shell
+* Make this user a memeber of the sudo group.
+* Pull a password from the [Password Tumbler](https://github.com/NHSCS-ORG/auto-pass-server) and set the users password.
+
+##### Part 8
+* Log to the system that thirdboot.sh has completed.
+* Writes  ```thirdboot.check``` with a 1 so that when everyboot.sh runs it can determine the system's current deployment status.
+
+*Note: After this step network access is no longer a requirement, Everyboot does not check for network acess at boot.*
+
+---
+#### Everyboot
+Everyboot.sh runs at boot time to replace the configuration files that may have been replaced by an update. Primarly the sudoers and pam.d configuration.
+
+##### Step 1
+* Run a test against our ```.check``` files to determine if deployment has completed or not.
+
+##### Step 2
+* Replace ```/etc/pam.d/common-session``` with the backup copy from ```/etc/nhscs/config/files/pam.d/common-session```
+* Replace ```/etc/sudoers.d/01domain``` with the backup copy from ```/etc/nhscs/config/files/sudoers/01domain```
+
+##### Step 3
+* Log to the system that thirdboot.sh has completed.
+---
+### License
+<p align="center">
+<img src="https://i.imgur.com/mI5orYO.jpg" width="40%"></img>
+</p>
+In all honesty I don't care what you do with it as long as you link back to the source. You are free to make any changes you want.
