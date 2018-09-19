@@ -211,7 +211,7 @@ Everyboot.sh runs at boot time to replace the configuration files that may have 
 * Replace ```/etc/sudoers.d/01domain``` with the backup copy from ```/etc/nhscs/config/files/sudoers/01domain```
 
 ##### Step 3
-* Log to the system that thirdboot.sh has completed.
+* Log to the system that everyboot.sh has completed.
 ---
 ### License
 <p align="center">
