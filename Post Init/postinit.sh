@@ -2,8 +2,8 @@
 # sets it up, and the reboots.
 
 # Check if this is an installer or not.
-cmdline=$(cat /proc/cmdline | cut -c -4)
-if [ ! $cmdline = "BOOT" ];
+installer=$(cat /usr/bin/ubiquity | cut -c -4)
+if [ $installer = "#! /" ];
   then
     exit
   else
