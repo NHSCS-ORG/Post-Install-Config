@@ -3,7 +3,7 @@
 
 # Check if this is an installer or not.
 BOOT=$(uname -a | cut -c -12)
-if [ $BOOT = "Linux ubuntu" ];
+if [[ $BOOT = "Linux ubuntu" ]];
   then
     exit
   else
@@ -11,13 +11,13 @@ if [ $BOOT = "Linux ubuntu" ];
 fi
 
 # Because this is our post init, we need to create all of our files.
-if [ ! -d "/usr/nhscs/" ]; then
+if [[ ! -d "/usr/nhscs/" ]]; then
   mkdir /usr/nhscs/
 fi
 # Check if this is actually post init.
 touch /usr/nhscs/pinit.check
 pinit=$(cat /usr/nhscs/pinit.check)
-if [ $pinit = "1" ];
+if [[ $pinit = "1" ]];
   then
     exit
   else
