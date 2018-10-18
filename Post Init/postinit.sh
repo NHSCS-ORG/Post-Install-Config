@@ -2,8 +2,8 @@
 # sets it up, and the reboots.
 
 # Check if this is an installer or not.
-installer=$(cat /usr/bin/ubiquity | cut -c -4)
-if [ $installer = "#! /" ];
+BOOT=$(uname -a | cut -c -12)
+if [ $BOOT = "Linux ubuntu" ];
   then
     exit
   else
