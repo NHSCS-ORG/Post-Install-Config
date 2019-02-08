@@ -149,7 +149,7 @@ Secondboot.sh completes the following steps, and then reboots the machine:
 
 ##### Part 6
 * Log to the system that secondboot.sh has completed.
-* Writes  ```secondboot.check``` with a 1 so that when secondboot.sh runs it can determine the system's current deployment status.
+* Writes  ```secondboot.check``` with a 1 so that when thirdboot.sh runs it can determine the system's current deployment status.
 ---
 #### Thirdboot
 Thirdboot is the final configuration script we run. It fininishes configuration and then cleans up the system so it's in a state ready for use.
