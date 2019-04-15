@@ -2,20 +2,9 @@
 # sets it up, and the reboots.
 
 # Check if this is an installer or not.
-# Note: We use multiple detection methods because one is faster than the other, but not always available.
-# This multi-mode is the begining of our multi-OS support plan.
-## The first detection method checks /proc/cmdline to determine boot type. This works with BIOS systems, but not UEFI systems.
-BOOT=$(cat /proc/cmdline | cut -c -4)
-if [[ ! $BOOT = "BOOT" ]]
-  then
-    exit
-  else
-    :
-fi
-## The second detection method uses the known hostname of the Ubuntu Installer, to combat the failure of method one on UEFI systems.
-## This doesn't work all of the time, we need to figure out a better way to detect UEFI installers.
-UNAME=$(uname -a | cut -c -12)
-if [[ $UNAME = "Linux ubuntu" ]];
+# This detection checks if an installer is running, and is OS dependent.
+liveboot=$(pgrep ubiquity)
+if [[ ! $liveboot = "" ]];
   then
     exit
   else
