@@ -1,6 +1,6 @@
 # Post-Install-Config
 Configure an image deployed with [MaaS](https://maas.io/) to NHSCS spec for edu use. 
-## WARNING: Do not use this script without modifing it for your environment, it is hard coded for NHSCS and WILL FAIL without modification.
+## WARNING: Do not use this script without modifying it for your environment, it is hard coded for NHSCS and WILL FAIL without modification.
 
 ### What this system does:
 We use a combination of Systemd and MaaS to build out our deployment.
