@@ -41,7 +41,7 @@ Here are the steps that postinit.sh completes:
 * Writes  ```pinit.check``` with a 1 so that when postinstall.sh runs it can determine the system's current deployment status.
 ---
 #### HW Boot
-This part of configuration is called HW (short for hello world), we do not consider the system live untill this step has completed, hence why the section after this is called "Firstboot".
+This part of configuration is called HW (short for hello world), we do not consider the system live until this step has completed, hence why the section after this is called "Firstboot".
 Here are the steps that postinstall.sh completes:
 ##### Part One
 * Creates base deployment dirs in ```/etc/nhscs, /etc/nhscs/config, and /etc/nhscs/config/deploy```
