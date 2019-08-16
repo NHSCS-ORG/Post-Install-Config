@@ -132,27 +132,27 @@ Secondboot.sh completes the following steps, and then reboots the machine:
 
 ##### Part 2
 * Start the process to join the machine to ADDS.
-* Generate a hostname based on the UUID of the system, and the date & time, storing it in a varable.
+* Generate a hostname based on the UUID of the system, and the date & time, storing it in a variable.
 * Change the hostname to the generated hostname.
 
 ##### Part 3
 * Pull the domain join password from a server (to prevent publishing to GitHub).
 * Install ```realmd``` to provide authentication methods for ADDS.
-* Join the domain via realmd passing the hostname varable for computer name.
+* Join the domain via realmd passing the hostname variable for computer name.
 
 ##### Part 4
 * Configure ```realmd``` to permit login for the required groups.
 
 ##### Part 5
 * Configure sudoers to respect ADDS permissions for root and sudo access.
-* *Note: In this deployment our custom sudoers blocks access to some commands for specific user groups, but standard sudo acess remains for local users, this is why we use a random password later on, we do not want local access on the system. In this deployment a system problem should be resolved with a reimage, not troubleshooting.*
+* *Note: In this deployment our custom sudoers blocks access to some commands for specific user groups, but standard sudo access remains for local users, this is why we use a random password later on, we do not want local access on the system. In this deployment a system problem should be resolved with a reimage, not troubleshooting.*
 
 ##### Part 6
 * Log to the system that secondboot.sh has completed.
 * Writes  ```secondboot.check``` with a 1 so that when thirdboot.sh runs it can determine the system's current deployment status.
 ---
 #### Thirdboot
-Thirdboot is the final configuration script we run. It fininishes configuration and then cleans up the system so it's in a state ready for use.
+Thirdboot is the final configuration script we run. It finishes configuration and then cleans up the system so it's in a state ready for use.
 
 *Note: At this point the deployment will wait for network access before continuing, if the system can not bring up the network interface at this step, the deployment will hang. This is configured in the ```thirdboot.service``` file and generally should be left alone. If you are certain that your interface will come up, but for some reason systemd is being stupid, you can remove this line.*
 
